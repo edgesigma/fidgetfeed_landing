@@ -73,6 +73,18 @@
     body {
       min-height: max(884px, 100dvh);
     }
+
+    #delete{
+        background-color: blue;
+        color: white;
+        padding:  20px;
+        border-radius: 10px;
+        width:  100%;
+        display: block;
+        text-align: center;
+        font-size: x-large;
+        text-transform: uppercase;
+    }
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 antialiased">
@@ -84,73 +96,16 @@
 </header>
 <div class="relative mb-12">
 <div class="absolute inset-0 bg-primary rounded-xl"></div>
-<img alt="Fidget Feed app screenshot showing colorful interactive panels." class="relative w-full max-w-xs mx-auto rounded-3xl" src="img/Gallery-Mobile.png"/>
 </div>
 <section class="space-y-8 mb-12 text-center">
 <div>
-<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Preserve your focus.</h2>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        Fidget Feed delivers a smarter diversion; a tactile interactive space built to scratch the scrolling itch without wrecking your focus.
-                    </p>
-</div>
-<div>
-<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Reset, not regret.</h2>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        A mental fidget toy. A tap-safe zone. Because breaks should help you rest without regret.
-                    </p>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Delete Your Data.</h2>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed">You may request deletion of your FidgetFeed account and all associated data at any time. Send the request from the email address associated with the accouunt. Once received, we will delete all data associated with your account within 30 days.</p>
+
 </div>
 </section>
 <section class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg">
-<h3 class="text-xl font-bold text-center text-gray-900 dark:text-white mb-1">Join the waitlist</h3>
-<p class="text-center text-gray-500 dark:text-gray-400 mb-6">Be the first to know when we launch.</p>
-
-
-<form id="waitlist"
-            action="https://script.google.com/macros/s/AKfycbz8jMRp3hW6NmOm_UHKXxYMgu-Pyb06gFbqy-r1iFNywuFsBlY52d-p7eTy4cBPi7OHuQ/exec"
-            method="POST" autocomplete="on">
-    <input type="email" name="email" placeholder="your@email.com" class="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-10 pr-3 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
-    <input type="text"  name="name"  placeholder="Name (optional)" class="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-10 pr-3 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
-    <input type="hidden" name="source" value="waitlist_v1">
-    <input type="hidden" name="page"   value="">
-    <input type="hidden" name="ua"     value="">
-    <button type="submit" id="waitlist-submit" class="relative w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
-        <span class="submit-text">Join waitlist</span>
-        <span class="loading-spinner hidden w-4 h-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin" aria-hidden="true"></span>
-    </button>
-</form>
-
-<script>
-const form = document.getElementById('waitlist');
-const action = form.getAttribute('action');
-const submitBtn = document.getElementById('waitlist-submit');
-const submitText = submitBtn.querySelector('.submit-text');
-const spinner = submitBtn.querySelector('.loading-spinner');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (submitBtn.disabled) return;
-    submitBtn.disabled = true;
-    submitBtn.setAttribute('aria-busy', 'true');
-    submitText.textContent = 'Submitting…';
-    spinner.classList.remove('hidden');
-    form.page.value = location.href;
-    form.ua.value   = navigator.userAgent;
-    try {
-        await fetch(action, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
-        form.reset();
-        alert("You’re on the list!");
-        posthog.capture('form_submit', { property: 'success' })
-    } catch {
-        alert("Submission failed—please try again.");
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.removeAttribute('aria-busy');
-        submitText.textContent = 'Join waitlist';
-        spinner.classList.add('hidden');
-    }
-});
-</script>
-
+    <a id="delete" href="mailto:support@fidgetfeed.com">Delete Me</a>
 </section>
 </main>
 </div>

@@ -1,0 +1,1 @@
+operator1@alidade:/var/www$ scp -r fidgetfeed/* root@68.183.51.178:/var/www/fidgetfeed.com/html/

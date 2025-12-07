@@ -73,84 +73,191 @@
     body {
       min-height: max(884px, 100dvh);
     }
+
+    a{
+        text-decoration: underline;
+    }
+
+    #delete{
+        background-color: blue;
+        color: white;
+        padding:  20px;
+        border-radius: 10px;
+        width:  100%;
+        display: block;
+        text-align: center;
+        font-size: x-large;
+        text-transform: uppercase;
+    }
+
+    ul#meta{
+        padding-bottom: 20px;
+    }
+
+    section h2{
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 antialiased">
 <div class="min-h-screen flex flex-col items-center justify-center p-4">
-<main class="w-full max-w-md mx-auto">
+<main class="w-full max-w-xl mx-auto">
 <header class="text-center mb-8">
 <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-2">Fidget Feed</h1>
 <p class="text-lg text-primary font-semibold">Take Better Brain Breaks</p>
 </header>
 <div class="relative mb-12">
 <div class="absolute inset-0 bg-primary rounded-xl"></div>
-<img alt="Fidget Feed app screenshot showing colorful interactive panels." class="relative w-full max-w-xs mx-auto rounded-3xl" src="img/Gallery-Mobile.png"/>
 </div>
 <section class="space-y-8 mb-12 text-center">
-<div>
-<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Preserve your focus.</h2>
+<div class="text-left">
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">Privacy Policy</h2>
 <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        Fidget Feed delivers a smarter diversion; a tactile interactive space built to scratch the scrolling itch without wrecking your focus.
-                    </p>
+    <ul id="meta">
+        <li>Last updated: <b>Dec 7 2025</b></li>
+        <li>App Name: <b>Fidget Feed</b></li>
+        <li>Website: <b>https://fidgetfeed.com</b></li>
+    </ul>
+    
+</p>
+<p>
+We value your privacy. This Privacy Policy explains how we collect, use, store, and delete information when you use our mobile application (“the App”). By using the App, you agree to the practices described here.
+</p>
+
+<h2>1. Information We Collect</h2>
+
+We collect only the minimum personal data required for the App to function.
+
+<h2>1.1 Account Information</h2>
+
+If you create an account using email and password, we collect:
+
+Email address
+
+Password (stored securely as a hash; we never see the plain password)
+
+Firebase User ID (UID)
+
+This information is processed by Firebase Authentication, a service provided by Google.
+
+<h2>1.2 App Data Stored in Firebase</h2>
+
+Depending on your usage of the app, we may store limited user-generated or app-related data in Firebase (Firestore). Examples may include:
+
+User preferences or settings
+
+Session or usage metadata tied to your UID
+
+Other data necessary for core app functionality
+
+We do not collect or store financial information, contact lists, or device location.
+
+<h2>1.3 Automatically Collected Technical Data</h2>
+
+Firebase may automatically collect:
+
+Device identifiers
+
+App version
+
+Crash logs (if Firebase Crashlytics is enabled)
+
+Basic diagnostic data
+
+This data helps us improve app performance and stability.
+
+<h2>2. How We Use Your Information</h2>
+
+We use the collected information solely to:
+
+Authenticate you and provide account access
+
+Store app-related data tied to your account
+
+Improve app performance, stability, and security
+
+Provide customer support when requested
+
+We do not sell your personal data.
+We do not use your data for advertising purposes.
+
+<h2>3. How Your Information Is Stored and Protected</h2>
+
+Your data is stored securely using Firebase, which provides industry-standard security and encryption.
+
+All data is encrypted in transit (HTTPS/TLS).
+
+Passwords are hashed and never stored in plain text.
+
+Access to data is restricted by Firebase Security Rules.
+
+<h2>4. Data Sharing</h2>
+
+We do not share personal data with third parties except:
+
+Firebase / Google Cloud, which acts as our data processor and provides the backend infrastructure
+
+When required by law (e.g., legal request or court order)
+
+We do not share data for marketing or advertising.
+
+<h2>5. Data Retention</h2>
+
+We retain your data only as long as your account is active.
+When your account is deleted, all personal data associated with it is permanently removed from:
+
+Firebase Authentication
+
+Firestore or other Firebase storage locations
+
+See Section 6 for deletion instructions.
+
+<h2>6. Your Data Rights</h2>
+
+You have the right to:
+
+Access your data
+
+Correct your data
+
+Request deletion of your account and associated data
+
+<h2>6.1 Requesting Account Deletion</h2>
+
+To request deletion of your account and all associated data, click <a href="https://fidgetfeed.com/delete-account.html">here</a>
+
+Once we verify your identity, we will delete:
+
+Your Firebase Auth user record
+
+All Firestore documents associated with your UID
+
+Deletion requests are processed within 30 days.
+
+<h2>6.2 Partial Data Deletion</h2>
+
+We currently do not offer a method to delete individual pieces of data without deleting the entire account.
+
+<h2>7. Children’s Privacy</h2>
+
+The App is not intended for children under 13.
+We do not knowingly collect information from children under 13.
+
+<h2>8. Changes to This Policy</h2>
+
+We may update this Privacy Policy from time to time.
+The “Last updated” date at the top of this page will reflect any changes.
+
+You should review this page periodically for updates.
+
+<h2>9. Contact Us</h2>
+
+If you have questions about this Privacy Policy or about how your data is handled, contact us at:
+
+<a href="mailto:support@fidgetfeed.com">support@fidgetfeed.com</a>
+
 </div>
-<div>
-<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Reset, not regret.</h2>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        A mental fidget toy. A tap-safe zone. Because breaks should help you rest without regret.
-                    </p>
-</div>
-</section>
-<section class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg">
-<h3 class="text-xl font-bold text-center text-gray-900 dark:text-white mb-1">Join the waitlist</h3>
-<p class="text-center text-gray-500 dark:text-gray-400 mb-6">Be the first to know when we launch.</p>
-
-
-<form id="waitlist"
-            action="https://script.google.com/macros/s/AKfycbz8jMRp3hW6NmOm_UHKXxYMgu-Pyb06gFbqy-r1iFNywuFsBlY52d-p7eTy4cBPi7OHuQ/exec"
-            method="POST" autocomplete="on">
-    <input type="email" name="email" placeholder="your@email.com" class="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-10 pr-3 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
-    <input type="text"  name="name"  placeholder="Name (optional)" class="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 pl-10 pr-3 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm">
-    <input type="hidden" name="source" value="waitlist_v1">
-    <input type="hidden" name="page"   value="">
-    <input type="hidden" name="ua"     value="">
-    <button type="submit" id="waitlist-submit" class="relative w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
-        <span class="submit-text">Join waitlist</span>
-        <span class="loading-spinner hidden w-4 h-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin" aria-hidden="true"></span>
-    </button>
-</form>
-
-<script>
-const form = document.getElementById('waitlist');
-const action = form.getAttribute('action');
-const submitBtn = document.getElementById('waitlist-submit');
-const submitText = submitBtn.querySelector('.submit-text');
-const spinner = submitBtn.querySelector('.loading-spinner');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (submitBtn.disabled) return;
-    submitBtn.disabled = true;
-    submitBtn.setAttribute('aria-busy', 'true');
-    submitText.textContent = 'Submitting…';
-    spinner.classList.remove('hidden');
-    form.page.value = location.href;
-    form.ua.value   = navigator.userAgent;
-    try {
-        await fetch(action, { method: 'POST', body: new FormData(form), mode: 'no-cors' });
-        form.reset();
-        alert("You’re on the list!");
-        posthog.capture('form_submit', { property: 'success' })
-    } catch {
-        alert("Submission failed—please try again.");
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.removeAttribute('aria-busy');
-        submitText.textContent = 'Join waitlist';
-        spinner.classList.add('hidden');
-    }
-});
-</script>
-
 </section>
 </main>
 </div>
