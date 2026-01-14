@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fidget Feed - Better Brain Breaks</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&amp;family=Playfair+Display:ital,wght@1,700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#22C55E",
+                        "background-light": "#87CEEB",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                        logo: ["Outfit", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --hill-color: #166534;
+        }
+        .custom-landscape {
+            /* background: linear-gradient(180deg, #87CEEB 0%, #E0F2FE 40%, #A5B4FC 60%, #BBF7D0 80%, #166534 100%); */
+            min-height: 100vh;
+        }
+        .logo-text {
+            font-size: 4rem;
+            line-height: 0;
+            font-weight: 900;
+            color: #22C55E;
+            text-shadow: 
+                3px 3px 0px #1e3a8a,
+                6px 6px 0px #1e40af,
+                8px 8px 15px rgba(0,0,0,0.2);
+        }
+        @media (min-width: 1024px) {
+            .logo-text {
+                font-size: 8rem;
+                text-shadow: 
+                    4px 4px 0px #1e3a8a,
+                    8px 8px 0px #1e40af,
+                    12px 12px 20px rgba(0,0,0,0.2);
+            }
+        }
+        .google-play-btn {
+            background-color: #000;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #444;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-sans">
+<main class="relative min-h-screen w-full custom-landscape overflow-x-hidden pt-12 pb-32 px-6 lg:px-12 flex flex-col items-center">
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<!-- Light mode skyline -->
+<img src="img/skyline.svg" alt="" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4 w-[300vw] h-auto dark:hidden" style="min-width: 2400px;">
+<!-- Dark mode skyline -->
+<img src="img/skyline-dark.svg" alt="" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4 w-[300vw] h-auto hidden dark:block" style="min-width: 2400px;">
+<!-- <div class="absolute top-10 left-[-10%] w-64 h-24 bg-white/40 rounded-full blur-2xl"></div>
+<div class="absolute top-32 right-[-5%] w-80 h-32 bg-white/30 rounded-full blur-2xl"></div>
+<div class="absolute bottom-0 left-[-10%] w-full h-[60%] bg-[#818CF8]/20 rounded-full blur-3xl"></div> -->
+<!-- <div class="absolute bottom-[-5%] right-[-5%] w-full h-[50%] bg-[#4ADE80]/30 rounded-full blur-3xl"></div> -->
+</div>
+
+<div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+<div class="order-2 lg:order-1 flex flex-col gap-6 w-full max-w-lg mx-auto lg:mx-0">
+<div class="bg-white dark:bg-slate-950 p-6 rounded-[2rem] shadow-xl w-full">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_w9T_kXNkAVpiKPLeQWMoU1d7x_L0hDrJ6FhQTlm5jmMwZJJAZ7RQsmdRs2bRpG98kKJcYIGxWkHj0Z84lIDvkAJDcKMjVU9mpqJDAamskTvefrj1iPkgPfp26e9nBs0L11BYbML_iadOOgkJuFlA2fCFwfpSnGHn83TOjPbr4GbBuRk11ZPx3nb_ULIUbDgG0utr09w7pajvML7ASOcdyTKo5ieJzu98CmBWm8MHGGud91BN13J7SS8X96QtKKwELfi8PopblmU"/>
+<span class="font-bold text-slate-800 dark:text-slate-100 text-sm">fidget_feed</span>
+</div>
+<div class="flex justify-between items-start gap-4 text-left">
+<div>
+<h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2">Redeem Your Focus Time</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">You deserve distraction-free brain breaks.</p>
+</div>
+<div class="bg-green-500 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
+<span class="material-icons-round text-white text-3xl">card_giftcard</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-icons-round text-xs">favorite_border</span>
+<span class="text-xs font-medium text-left">12</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-950 p-6 rounded-[2rem] shadow-xl w-full">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMhbhfST2mQ539Wgsh6ZvzTRL5XJg8EFXwdQOzn9l4YQgXLdY2pfEjKg0QjrpXktRaU6rCMbDelBpIRr9luMBMaZPo5Abhju9FEdNIwXadY30EbXPMbZrvrh5XRMghMe8WK9fhojI-5EiZUGeMYe55_PlEhw5MFitInOhjzjvZ_ga2UnMgHqr6VjXIRf8VQS7BDYSrZEhOZkq7zJMmBvsJMxlMC08U9KxsFOWzadMGQAWYvSDljfvodKHYO3B9PDjVYg-UgcT7Irg"/>
+<span class="font-bold text-slate-800 dark:text-slate-100 text-sm">fidget_feed</span>
+</div>
+<div class="flex justify-between items-start gap-4 text-left">
+<div>
+<h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2">Stay in the Flow</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Fidget Feed gives you a break without the mindless distraction.</p>
+</div>
+<div class="bg-red-500 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
+<span class="material-icons-round text-white text-3xl">view_in_ar</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-icons-round text-xs">favorite_border</span>
+<span class="text-xs font-medium">8</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-950 p-6 rounded-[2rem] shadow-xl w-full">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTbHR6451DwYVevnsoWz0EUrXlxgptp70wRw3CNImglpjXSoqfoeMTuC-u66hN3olIlemkx5hK0xjXTGhlIveY3SQduc7-IYjZ6dTx5tAKG26sxCFRZiu9KTMX7BhpdBZebj8b_FbvMuwBEc1zj_XeeZ1fK1zM5h3zzst5rFRYQ99TI5xspTR_MEMgMPXmhweoSDPNOBqvrG9TTE3uRr287kSWFTe-U6U4ekStXsFoHq-sqJZmHbgDJ1iynmclUcLZExMaJUcwLAs"/>
+<span class="font-bold text-slate-800 dark:text-slate-100 text-sm">fidget_feed</span>
+</div>
+<div class="flex justify-between items-start gap-4 text-left">
+<div>
+<h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2">Fidgeting Fixes Your Attention</h3>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">fidget aids enhance sustained attention by 15-20% in low-stimulation tasks.</p>
+</div>
+<div class="bg-fuchsia-600 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
+<span class="material-icons-round text-white text-3xl">favorite</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-icons-round text-xs">favorite_border</span>
+<span class="text-xs font-medium">19</span>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 flex flex-col items-center lg:items-center text-center lg:text-center">
+<div class="mb-6 lg:mb-10">
+
+<div class="logo-text font-logo tracking-tighter uppercase select-none dark:text-primary">
+    <img src="img/fidget_feed_logotype.svg"><br/>
+</div>
+</div>
+<h1 class="text-4xl lg:text-6xl font-display italic leading-tight text-center relative mb-3 lg:mb-6 grow">
+    <span class="text-slate-900 dark:text-slate-100">Better Brain Breaks</span>
+</h1>
+<a class="hover:scale-105 active:scale-95 transition-all shadow-xl group w-64" href="#">
+ <img src="img/GetItOnGooglePlay_Badge_Web_color_English.svg" style="width:100%;"/>
+</a>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 w-full z-20 pointer-events-none">
+</div>
+</main>
+<button class="fixed bottom-6 right-6 z-50 p-4 bg-white dark:bg-slate-800 rounded-full shadow-2xl hover:scale-110 active:scale-90 transition-transform" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round text-slate-800 dark:text-yellow-400">dark_mode</span>
+</button>
+
+</body></html>
