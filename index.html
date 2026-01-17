@@ -8,18 +8,11 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
                         primary: "#22C55E",
                         "background-light": "#87CEEB",
-                        "background-dark": "#0f172a",
-                    },
-                    fontFamily: {
-                        display: ["Playfair Display", "serif"],
-                        sans: ["Inter", "sans-serif"],
-                        logo: ["Outfit", "sans-serif"],
                     },
                     borderRadius: {
                         DEFAULT: "1.5rem",
@@ -37,58 +30,105 @@
     })
 </script>
 <style type="text/tailwindcss">
-        :root {
-            --hill-color: #166534;
-        }
         .custom-landscape {
-            /* background: linear-gradient(180deg, #87CEEB 0%, #E0F2FE 40%, #A5B4FC 60%, #BBF7D0 80%, #166534 100%); */
             min-height: 100vh;
         }
-        /* .logo-text {
-            font-size: 4rem;
-            line-height: 0;
-            font-weight: 900;
-            color: #22C55E;
-            text-shadow: 
-                3px 3px 0px #1e3a8a,
-                6px 6px 0px #1e40af,
-                8px 8px 15px rgba(0,0,0,0.2);
-        } */
-        @media (min-width: 1024px) {
-            .logo-text {
-                font-size: 8rem;
-                text-shadow: 
-                    4px 4px 0px #1e3a8a,
-                    8px 8px 0px #1e40af,
-                    12px 12px 20px rgba(0,0,0,0.2);
-            }
+
+        @font-face {
+            font-family: 'logo-typeface';
+            src: url('fonts/ChangaOne-Italic.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
         }
-        .google-play-btn {
-            background-color: #000;
+
+        h1{
+            font-family: 'logo-typeface', sans-serif;
+            line-height: 1.4;
+        }
+
+        h2{
+            font-family: 'logo-typeface', sans-serif;
+        }
+        
+        /* CTA Button Toggle System */
+        .cta-toggle-playstore .beta-cta { display: none; }
+        .cta-toggle-beta .playstore-cta { display: none; }
+        
+        .beta-cta {
+            background-color: #020617;
             color: white;
-            padding: 10px 24px;
-            border-radius: 8px;
+            padding: 12px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid #444;
+            box-shadow: 0 10px 25px rgba(2, 6, 23, 0.3);
         }
-
-            @font-face {
-        font-family: 'logo-typeface';
-        src: url('fonts/ChangaOne-Italic.ttf') format('truetype');
-        font-weight: 100 900;
-        font-display: swap;
-    }
-
-    h1{
-        font-family: 'logo-typeface', sans-serif;
-        line-height: 1.4;
-    }
-
-    h2{
-        font-family: 'logo-typeface', sans-serif;
-    }
+        
+        .beta-cta:hover {
+            background-color: #0a0f2a;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(2, 6, 23, 0.4);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            z-index: 2000;
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        .success-message.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
     </style>
 <style>
     body {
@@ -96,76 +136,76 @@
     }
   </style>
   </head>
-<body class="bg-background-light dark:bg-background-dark min-h-screen font-sans">
-<main class="relative min-h-screen w-full custom-landscape overflow-x-hidden pt-12 pb-32 px-6 lg:px-12 flex flex-col items-center">
+<body class="bg-background-light min-h-screen font-sans cta-toggle-beta">
+<main class="relative min-h-screen w-full custom-landscape overflow-x-hidden pt-12 px-6 lg:px-12 flex flex-col items-center">
 <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-<!-- Light mode skyline -->
-<img src="img/skyline.svg" alt="" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4 w-[300vw] h-auto dark:hidden" style="min-width: 2400px;">
-<!-- Dark mode skyline -->
-<img src="img/skyline-dark.svg" alt="" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4 w-[300vw] h-auto hidden dark:block" style="min-width: 2400px;">
-<!-- <div class="absolute top-10 left-[-10%] w-64 h-24 bg-white/40 rounded-full blur-2xl"></div>
-<div class="absolute top-32 right-[-5%] w-80 h-32 bg-white/30 rounded-full blur-2xl"></div>
-<div class="absolute bottom-0 left-[-10%] w-full h-[60%] bg-[#818CF8]/20 rounded-full blur-3xl"></div> -->
+<img src="img/skyline.svg" alt="" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4 w-[300vw] h-auto" style="min-width: 2400px;">
 <div class="absolute bottom-[-5%] right-[-5%] w-full h-[50%] bg-[#4ADE80]/30 rounded-full blur-3xl"></div>
 </div>
 
 <div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 <div class="order-2 lg:order-1 flex flex-col gap-6 w-full max-w-lg mx-auto lg:mx-0 lg:pt-16">
-<div class="bg-white dark:bg-slate-950 p-6 rounded-[2rem] shadow-xl w-full">
+<div class="bg-white p-6 rounded-[2rem] shadow-xl w-full">
 <div class="flex items-center gap-3 mb-4">
-<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_w9T_kXNkAVpiKPLeQWMoU1d7x_L0hDrJ6FhQTlm5jmMwZJJAZ7RQsmdRs2bRpG98kKJcYIGxWkHj0Z84lIDvkAJDcKMjVU9mpqJDAamskTvefrj1iPkgPfp26e9nBs0L11BYbML_iadOOgkJuFlA2fCFwfpSnGHn83TOjPbr4GbBuRk11ZPx3nb_ULIUbDgG0utr09w7pajvML7ASOcdyTKo5ieJzu98CmBWm8MHGGud91BN13J7SS8X96QtKKwELfi8PopblmU"/>
-<span class="font-bold text-slate-800 dark:text-slate-100 text-sm">fidget_feed</span>
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_w9T_kXNkAVpiKPLeQWMoU1d7x_L0hDrJ6FhQTlm5jmMwZJJAZ7RQsmdRs2bRpG98kKJcYIGxWkHj0Z84lIDvkAJDcKMjVU9mpqJDAamskTvefrj1iPkgPfp26e9nBs0L11BYbML_iadOOgkJuFlA2fCFwfpSnGHn83TOjPbr4GbBuRk11ZPx3nb_ULIUbDgG0utr09w7pajvML7ASOcdyTKo5ieJzu98CmBWm8MHGGud91BN13J7SS8X96QtKKwELfi8PopblmU"/>
+<span class="font-bold text-slate-800 text-sm">fidget_feed</span>
 </div>
 <div class="flex justify-between items-start gap-4 text-left">
 <div>
-<h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2">Redeem Your Focus Time</h3>
-<p class="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">You deserve distraction-free brain breaks.</p>
+<h3 class="font-bold text-lg text-slate-900 leading-tight mb-2">Redeem Your Focus&nbsp;Time</h3>
+<p class="text-xs text-slate-600 mb-4 leading-relaxed">You deserve distraction-free brain&nbsp;breaks.</p>
 </div>
 <div class="bg-green-500 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
 <span class="material-icons-round text-white text-3xl">card_giftcard</span>
 </div>
 </div>
 <div class="flex items-center gap-1 text-slate-400">
+<button class="like-button flex items-center gap-1 hover:text-red-400 transition-colors cursor-pointer" type="button">
 <span class="material-icons-round text-xs">favorite_border</span>
-<span class="text-xs font-medium text-left">12</span>
+<span class="like-count text-xs font-medium text-left">12</span>
+</button>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-950 p-6 rounded-[2rem] shadow-xl w-full">
+<div class="bg-white p-6 rounded-[2rem] shadow-xl w-full">
 <div class="flex items-center gap-3 mb-4">
-<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMhbhfST2mQ539Wgsh6ZvzTRL5XJg8EFXwdQOzn9l4YQgXLdY2pfEjKg0QjrpXktRaU6rCMbDelBpIRr9luMBMaZPo5Abhju9FEdNIwXadY30EbXPMbZrvrh5XRMghMe8WK9fhojI-5EiZUGeMYe55_PlEhw5MFitInOhjzjvZ_ga2UnMgHqr6VjXIRf8VQS7BDYSrZEhOZkq7zJMmBvsJMxlMC08U9KxsFOWzadMGQAWYvSDljfvodKHYO3B9PDjVYg-UgcT7Irg"/>
-<span class="font-bold text-slate-800 dark:text-slate-100 text-sm">fidget_feed</span>
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMhbhfST2mQ539Wgsh6ZvzTRL5XJg8EFXwdQOzn9l4YQgXLdY2pfEjKg0QjrpXktRaU6rCMbDelBpIRr9luMBMaZPo5Abhju9FEdNIwXadY30EbXPMbZrvrh5XRMghMe8WK9fhojI-5EiZUGeMYe55_PlEhw5MFitInOhjzjvZ_ga2UnMgHqr6VjXIRf8VQS7BDYSrZEhOZkq7zJMmBvsJMxlMC08U9KxsFOWzadMGQAWYvSDljfvodKHYO3B9PDjVYg-UgcT7Irg"/>
+<span class="font-bold text-slate-800 text-sm">fidget_feed</span>
 </div>
 <div class="flex justify-between items-start gap-4 text-left">
 <div>
-<h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2">Stay in the Flow</h3>
-<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Fidget Feed gives you a break without the mindless distraction.</p>
+<h3 class="font-bold text-lg text-slate-900 leading-tight mb-2">Stay in the Flow</h3>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">Fidget Feed gives you a break without the mindless&nbsp;distraction.</p>
 </div>
 <div class="bg-red-500 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
 <span class="material-icons-round text-white text-3xl">view_in_ar</span>
 </div>
 </div>
 <div class="flex items-center gap-1 text-slate-400">
+<button class="like-button flex items-center gap-1 hover:text-red-400 transition-colors cursor-pointer" type="button">
 <span class="material-icons-round text-xs">favorite_border</span>
-<span class="text-xs font-medium">8</span>
+<span class="like-count text-xs font-medium">8</span>
+</button>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-950 p-6 rounded-[2rem] shadow-xl w-full">
+<div class="bg-white p-6 rounded-[2rem] shadow-xl w-full">
 <div class="flex items-center gap-3 mb-4">
-<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTbHR6451DwYVevnsoWz0EUrXlxgptp70wRw3CNImglpjXSoqfoeMTuC-u66hN3olIlemkx5hK0xjXTGhlIveY3SQduc7-IYjZ6dTx5tAKG26sxCFRZiu9KTMX7BhpdBZebj8b_FbvMuwBEc1zj_XeeZ1fK1zM5h3zzst5rFRYQ99TI5xspTR_MEMgMPXmhweoSDPNOBqvrG9TTE3uRr287kSWFTe-U6U4ekStXsFoHq-sqJZmHbgDJ1iynmclUcLZExMaJUcwLAs"/>
-<span class="font-bold text-slate-800 dark:text-slate-100 text-sm">fidget_feed</span>
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTbHR6451DwYVevnsoWz0EUrXlxgptp70wRw3CNImglpjXSoqfoeMTuC-u66hN3olIlemkx5hK0xjXTGhlIveY3SQduc7-IYjZ6dTx5tAKG26sxCFRZiu9KTMX7BhpdBZebj8b_FbvMuwBEc1zj_XeeZ1fK1zM5h3zzst5rFRYQ99TI5xspTR_MEMgMPXmhweoSDPNOBqvrG9TTE3uRr287kSWFTe-U6U4ekStXsFoHq-sqJZmHbgDJ1iynmclUcLZExMaJUcwLAs"/>
+<span class="font-bold text-slate-800 text-sm">fidget_feed</span>
 </div>
 <div class="flex justify-between items-start gap-4 text-left">
 <div>
-<h3 class="font-bold text-lg text-slate-900 dark:text-white leading-tight mb-2">Fidgeting Fixes Your Attention</h3>
-<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">fidget aids enhance sustained attention by 15-20% in low-stimulation tasks.</p>
+<h3 class="font-bold text-lg text-slate-900 leading-tight mb-2">Fidgeting Fixes Your Attention</h3>
+<p class="text-xs text-slate-600 leading-relaxed mb-4">fidget aids enhance sustained attention by 15-20% in low-stimulation&nbsp;tasks.</p>
 </div>
 <div class="bg-fuchsia-600 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
 <span class="material-icons-round text-white text-3xl">favorite</span>
 </div>
 </div>
 <div class="flex items-center gap-1 text-slate-400">
+<button class="like-button flex items-center gap-1 hover:text-red-400 transition-colors cursor-pointer" type="button">
 <span class="material-icons-round text-xs">favorite_border</span>
-<span class="text-xs font-medium">19</span>
+<span class="like-count text-xs font-medium">19</span>
+</button>
 </div>
 </div>
 </div>
@@ -176,25 +216,340 @@
     </div>
 </div>
 <h1 class="text-4xl lg:text-6xl text-center relative mb-8 lg:mb-10">
-    <span class="text-slate-950 dark:text-slate-100">Better Brain Breaks</span>
+    <span style="color: #020617;">Better Brain Breaks</span>
 </h1>
-<a class="hover:scale-105 active:scale-95 transition-all shadow-xl group w-64" href="#">
- <img src="img/GetItOnGooglePlay_Badge_Web_color_English.svg" style="width:100%;"/>
-</a>
+
+<!-- CTA Buttons - Toggle between Play Store and Beta -->
+<div class="flex justify-center">
+    <!-- Google Play Store Button (Hidden in Beta Mode) -->
+    <a class="playstore-cta hover:scale-105 active:scale-95 transition-all shadow-xl group w-64" href="#">
+        <img src="img/GetItOnGooglePlay_Badge_Web_color_English.svg" style="width:100%;"/>
+    </a>
+    
+    <!-- Beta CTA Button (Visible in Beta Mode) -->
+    <a href="#" class="beta-cta" onclick="openBetaForm(event)">
+        <span class="material-icons-round">group</span>
+        Join the Closed Beta
+    </a>
 </div>
 </div>
 </div>
-<div class="fixed bottom-0 left-0 w-full z-20 pointer-events-none">
 </div>
+<!-- Spacer to push footer to bottom on desktop -->
+<div class="flex-1 min-h-0"></div>
 
 <!-- Footer Links -->
-<div class="mt-8 pt-4 pb-6 text-center relative z-30">
+<div class="mt-auto pt-8 pb-6 text-center relative z-30 w-full">
 <div class="flex justify-center gap-6 text-sm">
-<a href="privacy-policy.html" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">Privacy Policy</a>
-<a href="deletion-request.html" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">Data Deletion Request</a>
+<a href="privacy-policy.html" class="text-white underline hover:text-white transition-colors" style="mix-blend-mode: difference;">Privacy Policy</a>
+<a href="deletion-request.html" class="text-white underline hover:text-white transition-colors" style="mix-blend-mode: difference;">Data Deletion Request</a>
 </div>
 </div>
 
 </main>
+
+<!-- Beta Sign-up Modal -->
+<div id="betaModal" class="modal" onclick="closeBetaForm(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-slate-900">Join the Closed Beta</h2>
+            <button onclick="closeBetaForm()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+        </div>
+        
+        <form id="betaSignupForm" class="space-y-4">
+            <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                       placeholder="your@email.com">
+            </div>
+            
+            <div>
+                <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Name (optional)</label>
+                <input type="text" id="name" name="name"
+                       class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                       placeholder="Name (optional)">
+            </div>
+            
+            <!-- Hidden fields matching production form -->
+            <input type="hidden" name="source" value="beta_signup_v1">
+            <input type="hidden" name="page" value="">
+            <input type="hidden" name="ua" value="">
+            <input type="hidden" name="origin" value="">
+            <input type="hidden" name="referrer" value="">
+            <input type="hidden" name="timestamp" value="">
+            <input type="hidden" name="session_id" value="">
+            <input type="hidden" name="token" value="">
+            
+            <button type="submit" id="betaSubmitBtn" class="relative w-full bg-slate-900 text-white py-3 px-6 rounded-lg font-medium hover:bg-slate-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                <span class="submit-text">Join Beta Waitlist</span>
+                <span class="loading-spinner hidden w-4 h-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin ml-2" aria-hidden="true"></span>
+            </button>
+        </form>
+        
+        <p class="text-xs text-slate-500 mt-4 text-center">
+            We'll contact you when the beta is available. Your information is kept private.
+        </p>
+    </div>
+</div>
+
+<script>
+// Anti-spoofing variables
+let sessionId = '';
+let formToken = '';
+let formOpenTime = 0;
+
+// Generate session ID and form token on page load
+document.addEventListener('DOMContentLoaded', function() {
+    sessionId = generateSessionId();
+    formToken = generateFormToken();
+    initializeLikes();
+});
+
+function openBetaForm(event) {
+    event.preventDefault();
+    
+    // Domain validation
+    if (!isValidDomain()) {
+        console.error('Invalid domain access attempt');
+        return;
+    }
+    
+    formOpenTime = Date.now();
+    document.getElementById('betaModal').classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+}
+
+function closeBetaForm(event) {
+    if (event && event.target !== event.currentTarget && !event.target.closest('button')) {
+        return; // Only close if clicking backdrop or close button
+    }
+    document.getElementById('betaModal').classList.remove('show');
+    document.body.style.overflow = ''; // Restore background scroll
+}
+
+// Handle form submission
+document.getElementById('betaSignupForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('betaSubmitBtn');
+    const submitText = submitBtn.querySelector('.submit-text');
+    const spinner = submitBtn.querySelector('.loading-spinner');
+    
+    if (submitBtn.disabled) return;
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.setAttribute('aria-busy', 'true');
+    submitText.textContent = 'Submitting…';
+    spinner.classList.remove('hidden');
+    
+    // Set hidden fields
+    this.page.value = location.href;
+    this.ua.value = navigator.userAgent;
+    this.origin.value = window.location.origin;
+    this.referrer.value = document.referrer;
+    this.timestamp.value = Date.now();
+    this.session_id.value = sessionId;
+    this.token.value = formToken;
+    
+    // Anti-spoofing validations
+    if (!performAntiSpoofingChecks()) {
+        showSuccessMessage("Security check failed. Please try again.", true);
+        return;
+    }
+    
+    try {
+        // Send to same endpoint as production
+        await fetch('https://script.google.com/macros/s/AKfycbwNLH6BxAMoB7WXaN1i_tSOwrCCCT4SIfLt3jFJ02OTZiR_DRAW4AR1fbQCDaFOUsjMWQ/exec', { 
+            method: 'POST', 
+            body: new FormData(this), 
+            mode: 'no-cors' 
+        });
+        
+        this.reset();
+        showSuccessMessage("You're on the beta list!");
+        
+        // Track with PostHog
+        if (typeof posthog !== 'undefined') {
+            posthog.capture('form_submit', { property: 'success', source: 'beta_signup_v1' });
+        }
+        
+        // Deactivate the CTA button on success
+        deactivateCTAButton();
+        
+        closeBetaForm();
+        
+    } catch (error) {
+        showSuccessMessage("Submission failed—please try again.", true);
+    } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
+        submitText.textContent = 'Join Beta Waitlist';
+        spinner.classList.add('hidden');
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeBetaForm();
+    }
+});
+
+// Show success/error message
+function showSuccessMessage(message, isError = false) {
+    // Create message element
+    const messageEl = document.createElement('div');
+    messageEl.className = 'success-message';
+    messageEl.innerHTML = `
+        <span class="material-icons-round">${isError ? 'error' : 'check_circle'}</span>
+        ${message}
+    `;
+    
+    // Style for error
+    if (isError) {
+        messageEl.style.background = '#ef4444';
+        messageEl.style.boxShadow = '0 10px 25px rgba(239, 68, 68, 0.3)';
+    }
+    
+    // Add to page
+    document.body.appendChild(messageEl);
+    
+    // Show with animation
+    setTimeout(() => messageEl.classList.add('show'), 100);
+    
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+        messageEl.classList.remove('show');
+        setTimeout(() => {
+            if (messageEl.parentNode) {
+                messageEl.parentNode.removeChild(messageEl);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// Deactivate CTA button after successful submission
+function deactivateCTAButton() {
+    const betaCTA = document.querySelector('.beta-cta');
+    if (betaCTA) {
+        betaCTA.style.opacity = '0.5';
+        betaCTA.style.cursor = 'not-allowed';
+        betaCTA.style.pointerEvents = 'none';
+        
+        // Update text and icon
+        const iconSpan = betaCTA.querySelector('.material-icons-round');
+        const textContent = betaCTA.childNodes[betaCTA.childNodes.length - 1];
+        
+        if (iconSpan) iconSpan.textContent = 'check_circle';
+        if (textContent) textContent.textContent = ' Already Joined!';
+        
+        // Remove click handler
+        betaCTA.removeAttribute('onclick');
+    }
+}
+
+// Anti-spoofing utility functions
+function generateSessionId() {
+    return 'sess_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+}
+
+function generateFormToken() {
+    // Static shared secret that matches Google Apps Script
+    return 'wow_look_at_you_hacker-viewing_pagesource_like_a_champ';
+}
+
+function isValidDomain() {
+    const allowedDomains = ['fidgetfeed.com', 'www.fidgetfeed.com'];
+    const currentDomain = window.location.hostname;
+    return allowedDomains.includes(currentDomain) || currentDomain.endsWith('.fidgetfeed.com');
+}
+
+function performAntiSpoofingChecks() {
+    // Check 1: Domain validation
+    if (!isValidDomain()) {
+        console.error('Domain validation failed');
+        return false;
+    }
+    
+    // Check 2: Minimum form interaction time (prevent instant submissions)
+    const timeSinceOpen = Date.now() - formOpenTime;
+    if (timeSinceOpen < 2000) { // Minimum 2 seconds
+        console.error('Form submitted too quickly');
+        return false;
+    }
+    
+    // Check 3: Origin header validation
+    if (window.location.origin !== document.querySelector('input[name="origin"]').value) {
+        console.error('Origin mismatch');
+        return false;
+    }
+    
+    // Check 4: Session validation
+    if (!sessionId || sessionId.length < 10) {
+        console.error('Invalid session');
+        return false;
+    }
+    
+    // Check 5: Form token validation
+    if (!formToken || formToken !== generateFormToken()) {
+        console.error('Invalid form token');
+        return false;
+    }
+    
+    // Check 6: Browser environment validation
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+        console.error('Invalid browser environment');
+        return false;
+    }
+    
+    return true;
+}
+
+// Interactive like functionality for mock social posts
+function initializeLikes() {
+    // Get stored likes from localStorage or use defaults
+    const defaultLikes = [12, 8, 19];
+    const storedLikes = localStorage.getItem('fidgetfeed_likes');
+    let likeCounts = storedLikes ? JSON.parse(storedLikes) : defaultLikes;
+    
+    // Find all like buttons and set up click handlers
+    const likeButtons = document.querySelectorAll('.like-button');
+    const likeCounters = document.querySelectorAll('.like-count');
+    
+    // Initialize displayed counts
+    likeCounters.forEach((counter, index) => {
+        counter.textContent = likeCounts[index] || defaultLikes[index];
+    });
+    
+    // Add click handlers
+    likeButtons.forEach((button, index) => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Increment count
+            likeCounts[index] = (likeCounts[index] || defaultLikes[index]) + 1;
+            
+            // Update display
+            likeCounters[index].textContent = likeCounts[index];
+            
+            // Save to localStorage
+            localStorage.setItem('fidgetfeed_likes', JSON.stringify(likeCounts));
+            
+            // Add visual feedback
+            const heartIcon = button.querySelector('.material-icons-round');
+            heartIcon.style.transform = 'scale(1.3)';
+            heartIcon.style.color = '#ef4444';
+            
+            setTimeout(() => {
+                heartIcon.style.transform = 'scale(1)';
+                heartIcon.style.color = '';
+            }, 200);
+        });
+    });
+}
+</script>
 
 </body></html>
