@@ -48,26 +48,19 @@
     }
 
     @font-face {
-        font-family: 'playwrite';
-        src: url('fonts/PlaywriteHU-VariableFont_wght.ttf') format('truetype');
-        font-weight: 100 900;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'stacksans';
-        src: url('fonts/StackSansNotch-VariableFont_wght.ttf') format('truetype');
+        font-family: 'logo-typeface';
+        src: url('fonts/ChangaOne-Italic.ttf') format('truetype');
         font-weight: 100 900;
         font-display: swap;
     }
 
     h1{
-        font-family: 'stacksans', sans-serif;
+        font-family: 'logo-typeface', sans-serif;
         line-height: 1.4;
     }
 
     h2{
-        font-family: 'stacksans', sans-serif;
+        font-family: 'logo-typeface', sans-serif;
     }
 
     body {
@@ -75,8 +68,8 @@
     }
 
     #delete{
-        background-color: blue;
-        color: white;
+        background-color: #78ee24;
+        color: black;
         padding:  20px;
         border-radius: 10px;
         width:  100%;
@@ -91,8 +84,11 @@
 <div class="min-h-screen flex flex-col items-center justify-center p-4">
 <main class="w-full max-w-md mx-auto">
 <header class="text-center mb-8">
-<h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-2">Fidget Feed</h1>
-<p class="text-lg text-primary font-semibold">Take Better Brain Breaks</p>
+ <div class="logo-text tracking-tighter dark:text-primary"  style="line-height: 0;">
+    <img src="img/fidget_feed_logotype.svg"><br/>
+</div>
+
+<!-- <p class="text-lg text-primary font-semibold">Take Better Brain Breaks</p> -->
 </header>
 <div class="relative mb-12">
 <div class="absolute inset-0 bg-primary rounded-xl"></div>
