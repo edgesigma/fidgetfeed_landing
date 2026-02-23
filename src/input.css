@@ -8,7 +8,7 @@
 @layer base {
     @font-face {
         font-family: 'ChangaOne';
-        src: url('../fonts/ChangaOne-Italic.ttf') format('truetype');
+        src: url('../fonts/ChangaOne-Italic.woff2') format('woff2');
         font-weight: 100 900;
         font-display: swap;
     }
@@ -29,7 +29,7 @@
         font-style: normal;
         font-weight: 400;
         font-display: block;
-        src: url('../fonts/material-icons-round.woff2') format('woff2');
+        src: url('../fonts/material-icons-round-subset.woff2') format('woff2');
     }
 
     html {
@@ -153,6 +153,7 @@
         position: relative;
         overflow: hidden;
         background: #000;
+        aspect-ratio: 480 / 1066;
     }
     .phone-video {
         display: block;

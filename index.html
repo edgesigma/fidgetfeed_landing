@@ -5,9 +5,11 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fidget Feed - The App Blocker That Gives Back</title>
 <meta name="description" content="FidgetFeed intercepts your distracting apps and replaces them with interactive fidgets. Get the dopamine hit without the 45-minute scroll hole.">
-<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="icon" type="image/svg+xml" href="img/fidgetfeedlogo.svg"/>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href="fonts/material-icons-round.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="fonts/ChangaOne-Italic.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="fonts/material-icons-round-subset.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin/>
 <link rel="stylesheet" href="css/style.css"/>
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -76,7 +78,7 @@
                         <!-- Video screen -->
                         <div class="phone-screen">
                             <video id="heroVideo" autoplay loop muted playsinline class="phone-video">
-                                <source src="video/combined-loop.mp4" type="video/mp4">
+                                <source src="video/x-interrupt-session-compressed.mp4" type="video/mp4">
                             </video>
                             <!-- Unmute overlay -->
                             <button id="unmuteBtn" onclick="toggleMute()" class="unmute-btn" aria-label="Unmute video">
@@ -86,8 +88,9 @@
                         <!-- Bottom bezel with nav bar -->
                         <div class="phone-chin"></div>
                     </div>
-                    <!-- Decorative blur behind phone -->
-                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand/20 rounded-full blur-[100px]"></div>
+                    <!-- Decorative glow behind phone -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[100px] bg-[#4af530] opacity-50"></div>
+                    <div class="absolute -z-10 top-1/3 left-1/2 -translate-x-[60%] -translate-y-1/2 w-[350px] h-[350px] rounded-full blur-[80px] bg-[#f0de04] opacity-30"></div>
                 </div>
             </div>
         </div>
@@ -251,9 +254,45 @@
             </div>
 
             <!-- Fidget 3: Magnetic Tile -->
-            <div class="fidget-container glow-green-sm overflow-hidden relative sm:col-span-2 lg:col-span-1">
+            <div class="fidget-container glow-green-sm overflow-hidden relative">
                 <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
                        src="video/magnetic-tile-cropped.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+
+            <!-- Fidget 4: Dial Block -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/dial-block-cropped.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+
+            <!-- Fidget 5: Some Chords -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/some-chords-cropped.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+
+            <!-- Fidget 6: Tap Typing -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/tap-typing-cropped.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+
+            <!-- Fidget 7: Trapped Bead -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative sm:col-span-2 lg:col-span-1">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/trapped-bead-cropped.mp4"></video>
                 <button class="unmute-btn preview-unmute" aria-label="Unmute video">
                     <span class="material-icons-round text-lg">volume_off</span>
                 </button>
@@ -307,7 +346,7 @@
 
 <!-- ========== FOOTER ========== -->
 <footer class="border-t border-white/5 py-8">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
         <div class="flex items-center gap-2">
             <img src="img/fidgetfeedlogo.svg" alt="" class="w-5 h-5"/>
             <span>&copy; 2025 Fidget Feed</span>

@@ -3,9 +3,13 @@ index-old.html
 
 # Ignore everything in video/ except production files
 video/*
-!video/combined-loop.mp4
+!video/x-interrupt-session-compressed.mp4
 !video/clicky-wheel-cropped-captioned.mp4
 !video/magnetic-tile-cropped.mp4
+!video/dial-block-cropped.mp4
+!video/some-chords-cropped.mp4
+!video/tap-typing-cropped.mp4
+!video/trapped-bead-cropped.mp4
 !video/bubble_preview/
 video/bubble_preview/*
 !video/bubble_preview/bubble-combined.mp4
