@@ -1,278 +1,349 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fidget Feed - Better Brain Breaks</title>
+<title>Fidget Feed - The App Blocker That Gives Back</title>
+<meta name="description" content="FidgetFeed intercepts your distracting apps and replaces them with interactive fidgets. Get the dopamine hit without the 45-minute scroll hole.">
 <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="fonts/material-icons-round.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="css/style.css"/>
 <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#22C55E",
-                        "background-light": "#87CEEB",
-                    },
-                    borderRadius: {
-                        DEFAULT: "1.5rem",
-                    },
-                },
-            },
-        };
-    </script>
-    <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_2qV5jRP9Pqge9rD1x3yisjF8aobXJgZPM5MKZBZMVpo', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2025-05-24',
-        person_profiles: 'always', // or 'always' to create profiles for anonymous users as well
+        person_profiles: 'always',
     })
 </script>
-<style type="text/tailwindcss">
-        .custom-landscape {
-            min-height: 100vh;
-        }
+</head>
+<body class="antialiased">
 
-        @font-face {
-            font-family: 'logo-typeface';
-            src: url('fonts/ChangaOne-Italic.ttf') format('truetype');
-            font-weight: 100 900;
-            font-display: swap;
-        }
-
-        h1{
-            font-family: 'logo-typeface', sans-serif;
-            line-height: 1.4;
-        }
-
-        h2{
-            font-family: 'logo-typeface', sans-serif;
-        }
-        
-        /* CTA Button Toggle System */
-        .cta-toggle-playstore .beta-cta { display: none; }
-        .cta-toggle-beta .playstore-cta { display: none; }
-        
-        .beta-cta {
-            background-color: #020617;
-            color: white;
-            padding: 12px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 25px rgba(2, 6, 23, 0.3);
-        }
-        
-        .beta-cta:hover {
-            background-color: #0a0f2a;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(2, 6, 23, 0.4);
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            backdrop-filter: blur(4px);
-        }
-        
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* Success Message */
-        .success-message {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #10b981;
-            color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
-            z-index: 2000;
-            transform: translateX(400px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-        
-        .success-message.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background-light min-h-screen font-sans cta-toggle-beta">
-<main class="relative min-h-screen w-full custom-landscape overflow-x-hidden pt-12 px-6 lg:px-12 flex flex-col items-center">
-<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-<img src="img/skyline.svg" alt="" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4 w-[300vw] h-auto" style="min-width: 2400px;">
-<div class="absolute bottom-[-5%] right-[-5%] w-full h-[50%] bg-[#4ADE80]/30 rounded-full blur-3xl"></div>
-</div>
-
-<div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-<div class="order-2 lg:order-1 flex flex-col gap-6 w-full max-w-lg mx-auto lg:mx-0 lg:pt-16">
-<div class="bg-white p-6 rounded-[2rem] shadow-xl w-full">
-<div class="flex items-center gap-3 mb-4">
-<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="img/fidgetfeedlogo.svg"/>
-<span class="font-bold text-slate-800 text-sm">fidget_feed</span>
-</div>
-<div class="flex justify-between items-start gap-4 text-left">
-<div>
-<h3 class="font-bold text-lg text-slate-900 leading-tight mb-2">Redeem Your Focus&nbsp;Time</h3>
-<p class="text-xs text-slate-600 mb-4 leading-relaxed">You deserve distraction-free brain&nbsp;breaks.</p>
-</div>
-<div class="bg-green-500 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
-<span class="material-icons-round text-white text-3xl">card_giftcard</span>
-</div>
-</div>
-<div class="flex items-center gap-1 text-slate-400">
-<button class="like-button flex items-center gap-1 hover:text-red-400 transition-colors cursor-pointer" type="button">
-<span class="material-icons-round text-xs">favorite_border</span>
-<span class="like-count text-xs font-medium text-left">12</span>
-</button>
-</div>
-</div>
-<div class="bg-white p-6 rounded-[2rem] shadow-xl w-full">
-<div class="flex items-center gap-3 mb-4">
-<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="img/fidgetfeedlogo.svg"/>
-<span class="font-bold text-slate-800 text-sm">fidget_feed</span>
-</div>
-<div class="flex justify-between items-start gap-4 text-left">
-<div>
-<h3 class="font-bold text-lg text-slate-900 leading-tight mb-2">Stay in the Flow</h3>
-<p class="text-xs text-slate-600 leading-relaxed mb-4">Fidget Feed gives you a break without the mindless&nbsp;distraction.</p>
-</div>
-<div class="bg-red-500 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
-<span class="material-icons-round text-white text-3xl">view_in_ar</span>
-</div>
-</div>
-<div class="flex items-center gap-1 text-slate-400">
-<button class="like-button flex items-center gap-1 hover:text-red-400 transition-colors cursor-pointer" type="button">
-<span class="material-icons-round text-xs">favorite_border</span>
-<span class="like-count text-xs font-medium">8</span>
-</button>
-</div>
-</div>
-<div class="bg-white p-6 rounded-[2rem] shadow-xl w-full">
-<div class="flex items-center gap-3 mb-4">
-<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="img/fidgetfeedlogo.svg"/>
-<span class="font-bold text-slate-800 text-sm">fidget_feed</span>
-</div>
-<div class="flex justify-between items-start gap-4 text-left">
-<div>
-<h3 class="font-bold text-lg text-slate-900 leading-tight mb-2">Fidgeting Fixes Your Attention</h3>
-<p class="text-xs text-slate-600 leading-relaxed mb-4">fidget aids enhance sustained attention by 15-20% in low-stimulation&nbsp;tasks.</p>
-</div>
-<div class="bg-fuchsia-600 p-3 rounded-xl flex-shrink-0 flex items-center justify-center">
-<span class="material-icons-round text-white text-3xl">favorite</span>
-</div>
-</div>
-<div class="flex items-center gap-1 text-slate-400">
-<button class="like-button flex items-center gap-1 hover:text-red-400 transition-colors cursor-pointer" type="button">
-<span class="material-icons-round text-xs">favorite_border</span>
-<span class="like-count text-xs font-medium">19</span>
-</button>
-</div>
-</div>
-</div>
-<div class="order-1 lg:order-2 flex flex-col items-center lg:items-center text-center lg:text-center">
-<div class="mb-6 lg:mb-10">
-    <div class="logo-text tracking-tighter dark:text-primary"  style="line-height: 0;">
-        <img src="img/fidget_feed_logotype.svg"><br/>
+<!-- ========== STICKY NAV ========== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-2">
+            <img src="img/fidgetfeedlogo.svg" alt="FidgetFeed" class="w-8 h-8"/>
+            <span class="font-display text-lg text-white">Fidget Feed</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+            <a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a>
+            <a href="#why" class="hover:text-white transition-colors">Why FidgetFeed</a>
+            <a href="#demo" class="hover:text-white transition-colors">Learn More</a>
+        </div>
+        <button onclick="openBetaForm(event)" class="bg-brand hover:bg-brand-hover text-dark text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+            Join Beta
+        </button>
     </div>
-</div>
-<h1 class="text-4xl lg:text-6xl text-center relative mb-8 lg:mb-10">
-    <span style="color: #020617;">Better Brain Breaks</span>
-</h1>
+</nav>
 
-<!-- CTA Buttons - Toggle between Play Store and Beta -->
-<div class="flex justify-center">
-    <!-- Google Play Store Button (Hidden in Beta Mode) -->
-    <a class="playstore-cta hover:scale-105 active:scale-95 transition-all shadow-xl group w-64" href="#">
-        <img src="img/GetItOnGooglePlay_Badge_Web_color_English.svg" style="width:100%;"/>
-    </a>
-    
-    <!-- Beta CTA Button (Visible in Beta Mode) -->
-    <a href="#" class="beta-cta" onclick="openBetaForm(event)">
-        <span class="material-icons-round">group</span>
-        Join the Closed Beta
-    </a>
-</div>
-</div>
-</div>
-</div>
-<!-- Spacer to push footer to bottom on desktop -->
-<div class="flex-1 min-h-0"></div>
+<!-- ========== HERO ========== -->
+<section class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand/10 rounded-full blur-[150px] pointer-events-none"></div>
 
-<!-- Footer Links -->
-<div class="mt-auto pt-8 pb-6 text-center relative z-30 w-full">
-<div class="flex justify-center gap-6 text-sm">
-<a href="privacy-policy.html" class="text-white underline hover:text-white transition-colors" style="mix-blend-mode: difference;">Privacy Policy</a>
-<a href="deletion-request.html" class="text-white underline hover:text-white transition-colors" style="mix-blend-mode: difference;">Data Deletion Request</a>
-</div>
-</div>
+    <div class="max-w-6xl mx-auto px-6 py-24 lg:py-32 w-full">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Copy -->
+            <div class="text-center lg:text-left">
+                <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
+                    Your brain breaks<br/>
+                    <span class="gradient-text">don't have to be<br/>mindless</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-400 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+                    FidgetFeed intercepts your distracting apps and replaces them with an interactive experience. Get the dopamine hit without the distracting scroll&nbsp;hole.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    <button onclick="openBetaForm(event)" class="bg-brand hover:bg-brand-hover text-dark font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand/25 flex items-center gap-3">
+                        <span class="material-icons-round text-xl">group</span>
+                        Join the Closed Beta
+                    </button>
+                    <a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm">
+                        See how it works
+                        <span class="material-icons-round text-base">arrow_downward</span>
+                    </a>
+                </div>
+            </div>
 
-</main>
+            <!-- Phone mockup -->
+            <div class="flex justify-center lg:justify-end">
+                <div class="relative">
+                    <!-- Android phone frame -->
+                    <div class="phone-frame glow-green">
+                        <!-- Top bezel with camera -->
+                        <div class="phone-notch"></div>
+                        <!-- Video screen -->
+                        <div class="phone-screen">
+                            <video id="heroVideo" autoplay loop muted playsinline class="phone-video">
+                                <source src="video/combined-loop.mp4" type="video/mp4">
+                            </video>
+                            <!-- Unmute overlay -->
+                            <button id="unmuteBtn" onclick="toggleMute()" class="unmute-btn" aria-label="Unmute video">
+                                <span class="material-icons-round text-lg">volume_off</span>
+                            </button>
+                        </div>
+                        <!-- Bottom bezel with nav bar -->
+                        <div class="phone-chin"></div>
+                    </div>
+                    <!-- Decorative blur behind phone -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand/20 rounded-full blur-[100px]"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<!-- Beta Sign-up Modal -->
+<!-- ========== PROBLEM STATEMENT ========== -->
+<section class="py-24 lg:py-32 relative">
+    <div class="max-w-4xl mx-auto px-6 text-center fade-up">
+        <span class="text-brand font-semibold text-sm tracking-widest uppercase mb-4 block">The problem</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+            App blockers just say <span class="text-red-400">no</span>
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
+            Your dopamine-hungry brain doesn't take no for an answer. You snooze the timer, bypass the block, and end up doomscrolling anyway. The craving doesn't go away just because an app tells you to&nbsp;stop.
+        </p>
+    </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section id="how-it-works" class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand/[0.03] to-transparent pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-6 relative">
+        <div class="text-center mb-16 fade-up">
+            <span class="text-brand font-semibold text-sm tracking-widest uppercase mb-4 block">How it works</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white">
+                Three steps to better breaks
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Step 1 -->
+            <div class="gradient-border p-8 fade-up">
+                <div class="step-number mb-6">1</div>
+                <h3 class="text-xl font-bold text-white mb-3">Block distracting apps</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Choose which apps to intercept — Instagram, TikTok, Twitter, whatever pulls you in. FidgetFeed watches for them in the background.
+                </p>
+            </div>
+            <!-- Step 2 -->
+            <div class="gradient-border p-8 fade-up">
+                <div class="step-number mb-6">2</div>
+                <h3 class="text-xl font-bold text-white mb-3">Stay in the flow instead</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    When you reach for a blocked app, FidgetFeed steps in with an interactive experience — something tactile and satisfying for your restless brain.
+                </p>
+            </div>
+            <!-- Step 3 -->
+            <div class="gradient-border p-8 fade-up">
+                <div class="step-number mb-6">3</div>
+                <h3 class="text-xl font-bold text-white mb-3">Satisfy the craving, keep your focus</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Get the dopamine hit your brain wanted — without the distracting scroll hole. Take a real brain break, then get back to what matters.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== WHY FIDGETFEED (COMPARISON) ========== -->
+<section id="why" class="py-24 lg:py-32">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16 fade-up">
+            <span class="text-brand font-semibold text-sm tracking-widest uppercase mb-4 block">The difference</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white">
+                Not another app blocker
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 fade-up">
+            <!-- Traditional blockers -->
+            <div class="comparison-card bg-surface rounded-2xl p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
+                        <span class="material-icons-round text-red-400">block</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Traditional blockers</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-red-400 text-lg mt-0.5">close</span>
+                        <span class="text-gray-400">"You can't use your phone"</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-red-400 text-lg mt-0.5">close</span>
+                        <span class="text-gray-400">Willpower-based — you fight the craving</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-red-400 text-lg mt-0.5">close</span>
+                        <span class="text-gray-400">Frustration leads to bypassing the block</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-red-400 text-lg mt-0.5">close</span>
+                        <span class="text-gray-400">The craving stays — you just delay the scroll</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- FidgetFeed -->
+            <div class="comparison-card bg-surface rounded-2xl p-8 border-brand/20">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center">
+                        <img src="img/fidgetfeedlogo.svg" alt="" class="w-6 h-6"/>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">FidgetFeed</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-brand text-lg mt-0.5">check</span>
+                        <span class="text-gray-300">"Here's something better"</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-brand text-lg mt-0.5">check</span>
+                        <span class="text-gray-300">Gives your brain what it actually wants — stimulation</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-brand text-lg mt-0.5">check</span>
+                        <span class="text-gray-300">Satisfying fidgets remove the urge to bypass</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="material-icons-round text-brand text-lg mt-0.5">check</span>
+                        <span class="text-gray-300">The craving is satisfied — without the distraction</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== INTERACTIVE DEMO ========== -->
+<section id="demo" class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand/[0.03] to-transparent pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-6 relative">
+        <div class="text-center mb-16 fade-up">
+            <span class="text-brand font-semibold text-sm tracking-widest uppercase mb-4 block">Learn more</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+                See what a brain break feels like
+            </h2>
+            <p class="text-gray-400 text-lg max-w-xl mx-auto">
+                Get interactive fidget widgets instead of your go-to distraction.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-up">
+            <!-- Fidget 1: Bubble Pop -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/bubble_preview/bubble-combined.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+
+            <!-- Fidget 2: Clicky Wheel -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/clicky-wheel-cropped-captioned.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+
+            <!-- Fidget 3: Magnetic Tile -->
+            <div class="fidget-container glow-green-sm overflow-hidden relative sm:col-span-2 lg:col-span-1">
+                <video autoplay loop muted playsinline class="preview-video w-full aspect-[4/5] object-cover"
+                       src="video/magnetic-tile-cropped.mp4"></video>
+                <button class="unmute-btn preview-unmute" aria-label="Unmute video">
+                    <span class="material-icons-round text-lg">volume_off</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SCIENCE ========== -->
+<section class="py-24 lg:py-32">
+    <div class="max-w-4xl mx-auto px-6 text-center fade-up">
+        <span class="text-brand font-semibold text-sm tracking-widest uppercase mb-4 block">Backed by research</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white mb-8">
+            Fidgeting isn't a distraction —<br/>
+            <span class="gradient-text">it's how your brain focuses</span>
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <div class="gradient-border p-6 text-center">
+                <div class="font-display text-4xl text-brand mb-2">15–20%</div>
+                <p class="text-gray-400 text-sm">improvement in sustained attention during low-stimulation tasks when using fidget&nbsp;aids</p>
+            </div>
+            <div class="gradient-border p-6 text-center">
+                <div class="font-display text-4xl text-brand mb-2">29%</div>
+                <p class="text-gray-400 text-sm">of people bypass their screen time limits every single&nbsp;day</p>
+            </div>
+        </div>
+        <p class="text-gray-500 text-sm mt-8 max-w-xl mx-auto">
+            Traditional blockers rely on willpower. FidgetFeed works <em>with</em> your brain's need for stimulation — not against it.
+        </p>
+    </div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-t from-brand/[0.05] to-transparent pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center relative fade-up">
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+            Take Better Brain Breaks
+        </h2>
+        <p class="text-gray-400 text-lg mb-8 max-w-md mx-auto">
+            Join the closed beta and try the world's first fidget blocker.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center gap-4 justify-center">
+            <button onclick="openBetaForm(event)" class="bg-brand hover:bg-brand-hover text-dark font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand/25 flex items-center gap-3">
+                <span class="material-icons-round text-xl">group</span>
+                Join the Closed Beta
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="border-t border-white/5 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+        <div class="flex items-center gap-2">
+            <img src="img/fidgetfeedlogo.svg" alt="" class="w-5 h-5"/>
+            <span>&copy; 2025 Fidget Feed</span>
+        </div>
+        <div class="flex gap-6">
+            <a href="privacy-policy.html" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+            <a href="deletion-request.html" class="hover:text-gray-300 transition-colors">Data Deletion</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ========== BETA SIGN-UP MODAL ========== -->
 <div id="betaModal" class="modal" onclick="closeBetaForm(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold text-slate-900">Join the Closed Beta</h2>
-            <button onclick="closeBetaForm()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+            <h2 class="text-xl font-bold text-white">Join the Closed Beta</h2>
+            <button onclick="closeBetaForm()" class="text-gray-500 hover:text-white text-2xl transition-colors">&times;</button>
         </div>
-        
+
         <form id="betaSignupForm" class="space-y-4">
             <div>
-                <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                <input type="email" id="email" name="email" required 
-                       class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required
+                       class="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-colors"
                        placeholder="your@email.com">
             </div>
-            
+
             <div>
-                <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Name (optional)</label>
+                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name <span class="text-gray-500">(optional)</span></label>
                 <input type="text" id="name" name="name"
-                       class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                       placeholder="Name (optional)">
+                       class="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-colors"
+                       placeholder="Your name">
             </div>
-            
-            <!-- Hidden fields matching production form -->
-            <input type="hidden" name="source" value="beta_signup_v1">
+
+            <!-- Anti-spoofing hidden fields -->
+            <input type="hidden" name="source" value="beta_signup_v2">
             <input type="hidden" name="page" value="">
             <input type="hidden" name="ua" value="">
             <input type="hidden" name="origin" value="">
@@ -280,71 +351,137 @@
             <input type="hidden" name="timestamp" value="">
             <input type="hidden" name="session_id" value="">
             <input type="hidden" name="token" value="">
-            
-            <button type="submit" id="betaSubmitBtn" class="relative w-full bg-slate-900 text-white py-3 px-6 rounded-lg font-medium hover:bg-slate-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+
+            <button type="submit" id="betaSubmitBtn" class="w-full bg-brand hover:bg-brand-hover text-dark py-3 px-6 rounded-lg font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                 <span class="submit-text">Join Beta Waitlist</span>
-                <span class="loading-spinner hidden w-4 h-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin ml-2" aria-hidden="true"></span>
+                <span class="loading-spinner hidden w-4 h-4 border-2 border-white/70 border-t-transparent rounded-full animate-spin" aria-hidden="true"></span>
             </button>
         </form>
-        
-        <p class="text-xs text-slate-500 mt-4 text-center">
+
+        <p class="text-xs text-gray-500 mt-4 text-center">
             We'll contact you when the beta is available. Your information is kept private.
         </p>
     </div>
 </div>
 
 <script>
-// Anti-spoofing variables
+// ==========================================
+// VIDEO MUTE TOGGLE + AUTO-MUTE ON SCROLL
+// ==========================================
+let userUnmuted = false;
+
+function toggleMute() {
+    const video = document.getElementById('heroVideo');
+    const btn = document.getElementById('unmuteBtn');
+    video.muted = !video.muted;
+    userUnmuted = !video.muted;
+    btn.innerHTML = video.muted
+        ? '<span class="material-icons-round text-lg">volume_off</span>'
+        : '<span class="material-icons-round text-lg">volume_up</span>';
+}
+
+const heroObserver = new IntersectionObserver((entries) => {
+    const video = document.getElementById('heroVideo');
+    const btn = document.getElementById('unmuteBtn');
+    if (!video) return;
+    entries.forEach(entry => {
+        if (!entry.isIntersecting && !video.muted) {
+            video.muted = true;
+            btn.innerHTML = '<span class="material-icons-round text-lg">volume_off</span>';
+        } else if (entry.isIntersecting && userUnmuted && video.muted) {
+            video.muted = false;
+            btn.innerHTML = '<span class="material-icons-round text-lg">volume_up</span>';
+        }
+    });
+}, { threshold: 0.3 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const phoneFrame = document.querySelector('.phone-frame');
+    if (phoneFrame) heroObserver.observe(phoneFrame);
+});
+
+// ==========================================
+// SCROLL ANIMATIONS
+// ==========================================
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ==========================================
+// PREVIEW VIDEO UNMUTE TOGGLES
+// ==========================================
+document.querySelectorAll('.preview-unmute').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const video = this.parentElement.querySelector('.preview-video');
+        const willUnmute = video.muted;
+
+        // Mute all preview videos first
+        document.querySelectorAll('.preview-video').forEach(v => {
+            v.muted = true;
+            v.parentElement.querySelector('.preview-unmute').innerHTML =
+                '<span class="material-icons-round text-lg">volume_off</span>';
+        });
+
+        // Toggle the clicked one
+        if (willUnmute) {
+            video.muted = false;
+            this.innerHTML = '<span class="material-icons-round text-lg">volume_up</span>';
+        }
+    });
+});
+
+// ==========================================
+// INIT
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+    sessionId = generateSessionId();
+    formToken = generateFormToken();
+});
+
+// ==========================================
+// BETA FORM LOGIC (preserved from original)
+// ==========================================
 let sessionId = '';
 let formToken = '';
 let formOpenTime = 0;
 
-// Generate session ID and form token on page load
-document.addEventListener('DOMContentLoaded', function() {
-    sessionId = generateSessionId();
-    formToken = generateFormToken();
-    initializeLikes();
-});
-
 function openBetaForm(event) {
     event.preventDefault();
-    
-    // Domain validation
     if (!isValidDomain()) {
         console.error('Invalid domain access attempt');
         return;
     }
-    
     formOpenTime = Date.now();
     document.getElementById('betaModal').classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    document.body.style.overflow = 'hidden';
 }
 
 function closeBetaForm(event) {
-    if (event && event.target !== event.currentTarget && !event.target.closest('button')) {
-        return; // Only close if clicking backdrop or close button
-    }
+    if (event && event.target !== event.currentTarget && !event.target.closest('button')) return;
     document.getElementById('betaModal').classList.remove('show');
-    document.body.style.overflow = ''; // Restore background scroll
+    document.body.style.overflow = '';
 }
 
-// Handle form submission
 document.getElementById('betaSignupForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-    
+
     const submitBtn = document.getElementById('betaSubmitBtn');
     const submitText = submitBtn.querySelector('.submit-text');
     const spinner = submitBtn.querySelector('.loading-spinner');
-    
+
     if (submitBtn.disabled) return;
-    
-    // Show loading state
+
     submitBtn.disabled = true;
     submitBtn.setAttribute('aria-busy', 'true');
-    submitText.textContent = 'Submitting…';
+    submitText.textContent = 'Submitting\u2026';
     spinner.classList.remove('hidden');
-    
-    // Set hidden fields
+
     this.page.value = location.href;
     this.ua.value = navigator.userAgent;
     this.origin.value = window.location.origin;
@@ -352,38 +489,36 @@ document.getElementById('betaSignupForm').addEventListener('submit', async funct
     this.timestamp.value = Date.now();
     this.session_id.value = sessionId;
     this.token.value = formToken;
-    
-    // Anti-spoofing validations
+
     if (!performAntiSpoofingChecks()) {
-        showSuccessMessage("Security check failed. Please try again.", true);
+        showToast("Security check failed. Please try again.", true);
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
+        submitText.textContent = 'Join Beta Waitlist';
+        spinner.classList.add('hidden');
         return;
     }
-    
+
     try {
-        // Send to same endpoint as production
-        await fetch('https://script.google.com/macros/s/AKfycbwNLH6BxAMoB7WXaN1i_tSOwrCCCT4SIfLt3jFJ02OTZiR_DRAW4AR1fbQCDaFOUsjMWQ/exec', { 
-            method: 'POST', 
-            body: new FormData(this), 
-            mode: 'no-cors' 
+        await fetch('https://script.google.com/macros/s/AKfycbwNLH6BxAMoB7WXaN1i_tSOwrCCCT4SIfLt3jFJ02OTZiR_DRAW4AR1fbQCDaFOUsjMWQ/exec', {
+            method: 'POST',
+            body: new FormData(this),
+            mode: 'no-cors'
         });
-        
+
         this.reset();
-        showSuccessMessage("You're on the beta list!");
-        
-        // Track with PostHog
+        showToast("You're on the beta list!");
+
         if (typeof posthog !== 'undefined') {
-            posthog.capture('form_submit', { property: 'success', source: 'beta_signup_v1' });
+            posthog.capture('form_submit', { property: 'success', source: 'beta_signup_v2' });
         }
-        
-        // Deactivate the CTA button on success
-        deactivateCTAButton();
-        
+
+        deactivateCTAButtons();
         closeBetaForm();
-        
+
     } catch (error) {
-        showSuccessMessage("Submission failed—please try again.", true);
+        showToast("Submission failed \u2014 please try again.", true);
     } finally {
-        // Reset button state
         submitBtn.disabled = false;
         submitBtn.removeAttribute('aria-busy');
         submitText.textContent = 'Join Beta Waitlist';
@@ -391,165 +526,56 @@ document.getElementById('betaSignupForm').addEventListener('submit', async funct
     }
 });
 
-// Close modal with Escape key
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeBetaForm();
-    }
+    if (event.key === 'Escape') closeBetaForm();
 });
 
-// Show success/error message
-function showSuccessMessage(message, isError = false) {
-    // Create message element
-    const messageEl = document.createElement('div');
-    messageEl.className = 'success-message';
-    messageEl.innerHTML = `
-        <span class="material-icons-round">${isError ? 'error' : 'check_circle'}</span>
-        ${message}
-    `;
-    
-    // Style for error
-    if (isError) {
-        messageEl.style.background = '#ef4444';
-        messageEl.style.boxShadow = '0 10px 25px rgba(239, 68, 68, 0.3)';
-    }
-    
-    // Add to page
-    document.body.appendChild(messageEl);
-    
-    // Show with animation
-    setTimeout(() => messageEl.classList.add('show'), 100);
-    
-    // Auto-hide after 4 seconds
+function showToast(message, isError = false) {
+    const el = document.createElement('div');
+    el.className = 'toast ' + (isError ? 'error' : 'success');
+    el.innerHTML = '<span class="material-icons-round text-lg">' + (isError ? 'error' : 'check_circle') + '</span>' + message;
+    document.body.appendChild(el);
+    setTimeout(() => el.classList.add('show'), 50);
     setTimeout(() => {
-        messageEl.classList.remove('show');
-        setTimeout(() => {
-            if (messageEl.parentNode) {
-                messageEl.parentNode.removeChild(messageEl);
-            }
-        }, 300);
+        el.classList.remove('show');
+        setTimeout(() => el.remove(), 300);
     }, 4000);
 }
 
-// Deactivate CTA button after successful submission
-function deactivateCTAButton() {
-    const betaCTA = document.querySelector('.beta-cta');
-    if (betaCTA) {
-        betaCTA.style.opacity = '0.5';
-        betaCTA.style.cursor = 'not-allowed';
-        betaCTA.style.pointerEvents = 'none';
-        
-        // Update text and icon
-        const iconSpan = betaCTA.querySelector('.material-icons-round');
-        const textContent = betaCTA.childNodes[betaCTA.childNodes.length - 1];
-        
-        if (iconSpan) iconSpan.textContent = 'check_circle';
-        if (textContent) textContent.textContent = ' Already Joined!';
-        
-        // Remove click handler
-        betaCTA.removeAttribute('onclick');
-    }
+function deactivateCTAButtons() {
+    document.querySelectorAll('[onclick*="openBetaForm"]').forEach(btn => {
+        btn.style.opacity = '0.5';
+        btn.style.cursor = 'not-allowed';
+        btn.style.pointerEvents = 'none';
+        btn.innerHTML = '<span class="material-icons-round text-xl">check_circle</span> Already Joined!';
+    });
 }
 
-// Anti-spoofing utility functions
+// Anti-spoofing
 function generateSessionId() {
     return 'sess_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
 }
 
 function generateFormToken() {
-    // Static shared secret that matches Google Apps Script
     return 'wow_look_at_you_hacker-viewing_pagesource_like_a_champ';
 }
 
 function isValidDomain() {
-    const allowedDomains = ['fidgetfeed.com', 'www.fidgetfeed.com'];
-    const currentDomain = window.location.hostname;
-    return allowedDomains.includes(currentDomain) || currentDomain.endsWith('.fidgetfeed.com');
+    const allowed = ['fidgetfeed.com', 'www.fidgetfeed.com', 'localhost', '127.0.0.1'];
+    const host = window.location.hostname;
+    return allowed.includes(host) || host.endsWith('.fidgetfeed.com');
 }
 
 function performAntiSpoofingChecks() {
-    // Check 1: Domain validation
-    if (!isValidDomain()) {
-        console.error('Domain validation failed');
-        return false;
-    }
-    
-    // Check 2: Minimum form interaction time (prevent instant submissions)
-    const timeSinceOpen = Date.now() - formOpenTime;
-    if (timeSinceOpen < 2000) { // Minimum 2 seconds
-        console.error('Form submitted too quickly');
-        return false;
-    }
-    
-    // Check 3: Origin header validation
-    if (window.location.origin !== document.querySelector('input[name="origin"]').value) {
-        console.error('Origin mismatch');
-        return false;
-    }
-    
-    // Check 4: Session validation
-    if (!sessionId || sessionId.length < 10) {
-        console.error('Invalid session');
-        return false;
-    }
-    
-    // Check 5: Form token validation
-    if (!formToken || formToken !== generateFormToken()) {
-        console.error('Invalid form token');
-        return false;
-    }
-    
-    // Check 6: Browser environment validation
-    if (typeof window === 'undefined' || typeof document === 'undefined') {
-        console.error('Invalid browser environment');
-        return false;
-    }
-    
+    if (!isValidDomain()) return false;
+    if (Date.now() - formOpenTime < 2000) return false;
+    if (window.location.origin !== document.querySelector('input[name="origin"]').value) return false;
+    if (!sessionId || sessionId.length < 10) return false;
+    if (!formToken || formToken !== generateFormToken()) return false;
+    if (typeof window === 'undefined' || typeof document === 'undefined') return false;
     return true;
-}
-
-// Interactive like functionality for mock social posts
-function initializeLikes() {
-    // Get stored likes from localStorage or use defaults
-    const defaultLikes = [12, 8, 19];
-    const storedLikes = localStorage.getItem('fidgetfeed_likes');
-    let likeCounts = storedLikes ? JSON.parse(storedLikes) : defaultLikes;
-    
-    // Find all like buttons and set up click handlers
-    const likeButtons = document.querySelectorAll('.like-button');
-    const likeCounters = document.querySelectorAll('.like-count');
-    
-    // Initialize displayed counts
-    likeCounters.forEach((counter, index) => {
-        counter.textContent = likeCounts[index] || defaultLikes[index];
-    });
-    
-    // Add click handlers
-    likeButtons.forEach((button, index) => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Increment count
-            likeCounts[index] = (likeCounts[index] || defaultLikes[index]) + 1;
-            
-            // Update display
-            likeCounters[index].textContent = likeCounts[index];
-            
-            // Save to localStorage
-            localStorage.setItem('fidgetfeed_likes', JSON.stringify(likeCounts));
-            
-            // Add visual feedback
-            const heartIcon = button.querySelector('.material-icons-round');
-            heartIcon.style.transform = 'scale(1.3)';
-            heartIcon.style.color = '#ef4444';
-            
-            setTimeout(() => {
-                heartIcon.style.transform = 'scale(1)';
-                heartIcon.style.color = '';
-            }, 200);
-        });
-    });
 }
 </script>
 
-</body></html>
+</body>
+</html>

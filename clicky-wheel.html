@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #111; }
+  
+  .knob-edge {
+    position: relative;
+    width: 400px;
+    height: 80px;
+    background: linear-gradient(to right, #8a6d1a, #f2d06b 50%, #8a6d1a);
+    border-radius: 5px;
+    overflow: hidden; /* Clips the teeth at the edges */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  }
+
+  .tooth {
+    position: absolute;
+    top: 0;
+    width: 15px; /* Base width */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* The "valley" shadow */
+    transform-origin: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="knob-edge" id="knob"></div>
+
+<script>
+  const knob = document.getElementById('knob');
+  const totalTeethInFullCircle = 40;
+  const knobWidth = 400;
+  const radius = knobWidth / 2;
+
+  // We only render teeth within the 180-degree field of view (the front)
+  for (let i = 0; i <= totalTeethInFullCircle / 2; i++) {
+    const tooth = document.createElement('div');
+    tooth.className = 'tooth';
+    
+    // Calculate the angle in radians (from -PI/2 to PI/2)
+    const angle = (i / (totalTeethInFullCircle / 2)) * Math.PI - (Math.PI / 2);
+    
+    // Orthographic Projection: x = R * sin(theta)
+    const xPos = radius + (radius * Math.sin(angle));
+    
+    // Foreshortening: width = baseWidth * cos(theta)
+    const apparentWidth = 20 * Math.cos(angle);
+    
+    tooth.style.left = `${xPos}px`;
+    tooth.style.width = `${apparentWidth}px`;
+    // Offset by half its own width to center it on the calculated point
+    tooth.style.transform = `translateX(-50%)`;
+    
+    knob.appendChild(tooth);
+  }
+</script>
+</body>
+</html>

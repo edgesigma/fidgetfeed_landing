@@ -1,109 +1,60 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fidget Feed - Better Brain Breaks</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-
-<script>
-    tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-        colors: {
-            primary: "#3b82f6", // blue-500
-            "background-light": "#f3f4f6", // gray-100
-            "background-dark": "#111827", // gray-900
-        },
-        fontFamily: {
-            display: ["Poppins", "sans-serif"],
-        },
-        borderRadius: {
-            DEFAULT: "1rem", // 16px
-        },
-        },
-    },
-    };
-</script>
-    
+<title>Data Deletion - Fidget Feed</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="fonts/material-icons-round.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="css/style.css"/>
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_2qV5jRP9Pqge9rD1x3yisjF8aobXJgZPM5MKZBZMVpo', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2025-05-24',
-        person_profiles: 'always', // or 'always' to create profiles for anonymous users as well
+        person_profiles: 'always',
     })
 </script>
-<style>
-    .material-symbols-outlined {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-    }
+</head>
+<body class="antialiased">
 
-    @font-face {
-        font-family: 'logo-typeface';
-        src: url('fonts/ChangaOne-Italic.ttf') format('truetype');
-        font-weight: 100 900;
-        font-display: swap;
-    }
+<!-- Nav -->
+<nav class="border-b border-white/5 bg-dark/80 backdrop-blur-xl">
+    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2">
+            <img src="img/fidgetfeedlogo.svg" alt="FidgetFeed" class="w-7 h-7"/>
+            <span class="font-display text-lg text-white">Fidget Feed</span>
+        </a>
+    </div>
+</nav>
 
-    h1{
-        font-family: 'logo-typeface', sans-serif;
-        line-height: 1.4;
-    }
+<main class="max-w-xl mx-auto px-6 py-24 text-center">
+    <div class="mb-10">
+        <span class="material-icons-round text-red-400 text-5xl mb-4 block">delete_forever</span>
+        <h1 class="font-display text-3xl sm:text-4xl text-white mb-4">Delete Your Data</h1>
+        <p class="text-gray-400 leading-relaxed">
+            You may request deletion of your FidgetFeed account and all associated data at any time. Send the request from the email address associated with your account. Once received, we will delete all data associated with your account within 30&nbsp;days.
+        </p>
+    </div>
 
-    h2{
-        font-family: 'logo-typeface', sans-serif;
-    }
-
-    body {
-      min-height: max(884px, 100dvh);
-    }
-
-    #delete{
-        background-color: #78ee24;
-        color: black;
-        padding:  20px;
-        border-radius: 10px;
-        width:  100%;
-        display: block;
-        text-align: center;
-        font-size: x-large;
-        text-transform: uppercase;
-    }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 antialiased">
-<div class="min-h-screen flex flex-col items-center justify-center p-4">
-<main class="w-full max-w-md mx-auto">
-<header class="text-center mb-8">
- <div class="logo-text tracking-tighter dark:text-primary"  style="line-height: 0;">
-    <img src="img/fidget_feed_logotype.svg"><br/>
-</div>
-
-<!-- <p class="text-lg text-primary font-semibold">Take Better Brain Breaks</p> -->
-</header>
-<div class="relative mb-12">
-<div class="absolute inset-0 bg-primary rounded-xl"></div>
-</div>
-<section class="space-y-8 mb-12 text-center">
-<div>
-<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Delete Your Data.</h2>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed">You may request deletion of your FidgetFeed account and all associated data at any time. Send the request from the email address associated with the accouunt. Once received, we will delete all data associated with your account within 30 days.</p>
-
-</div>
-</section>
-<section class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg">
-    <a id="delete" href="mailto:support@fidgetfeed.com">Delete Me</a>
-</section>
+    <a href="mailto:support@fidgetfeed.com"
+       class="inline-flex items-center gap-3 bg-red-500 hover:bg-red-600 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 active:scale-95 no-underline">
+        <span class="material-icons-round">mail</span>
+        Request Deletion
+    </a>
 </main>
-</div>
 
-</body></html>
+<!-- Footer -->
+<footer class="border-t border-white/5 py-8 mt-auto">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+        <span>&copy; 2025 Fidget Feed</span>
+        <div class="flex gap-6">
+            <a href="/" class="hover:text-gray-300 transition-colors">Home</a>
+            <a href="privacy-policy.html" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

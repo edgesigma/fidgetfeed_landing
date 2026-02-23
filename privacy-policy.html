@@ -1,261 +1,157 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fidget Feed - Better Brain Breaks</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-
-<script>
-    tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-        colors: {
-            primary: "#3b82f6", // blue-500
-            "background-light": "#f3f4f6", // gray-100
-            "background-dark": "#111827", // gray-900
-        },
-        fontFamily: {
-            display: ["Poppins", "sans-serif"],
-        },
-        borderRadius: {
-            DEFAULT: "1rem", // 16px
-        },
-        },
-    },
-    };
-</script>
-    
+<title>Privacy Policy - Fidget Feed</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="fonts/material-icons-round.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="css/style.css"/>
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Rr Mr fi Or Ar ci Tr Cr capture Mi calculateEventProperties Lr register register_once register_for_session unregister unregister_for_session Hr getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ur jr createPersonProfile zr kr Br opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Dr debug M Nr getPageViewId captureTraceFeedback captureTraceMetric $r".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_2qV5jRP9Pqge9rD1x3yisjF8aobXJgZPM5MKZBZMVpo', {
         api_host: 'https://us.i.posthog.com',
         defaults: '2025-05-24',
-        person_profiles: 'always', // or 'always' to create profiles for anonymous users as well
+        person_profiles: 'always',
     })
 </script>
 <style>
-    .material-symbols-outlined {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-    }
+    a { color: #4af530; text-decoration: underline; }
+    a:hover { color: #53f32e; }
+</style>
+</head>
+<body class="antialiased">
 
-    @font-face {
-        font-family: 'logo-typeface';
-        src: url('fonts/ChangaOne-Italic.ttf') format('truetype');
-        font-weight: 100 900;
-        font-display: swap;
-    }
+<!-- Nav -->
+<nav class="border-b border-white/5 bg-dark/80 backdrop-blur-xl">
+    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2 no-underline">
+            <img src="img/fidgetfeedlogo.svg" alt="FidgetFeed" class="w-7 h-7"/>
+            <span class="font-display text-lg text-white" style="text-decoration:none;">Fidget Feed</span>
+        </a>
+    </div>
+</nav>
 
-    h1{
-        font-family: 'logo-typeface', sans-serif;
-        line-height: 1.4;
-    }
-
-    h2{
-        font-family: 'logo-typeface', sans-serif;
-    }
-
-    body {
-      min-height: max(884px, 100dvh);
-    }
-
-    a{
-        text-decoration: underline;
-    }
-
-    #delete{
-        background-color: blue;
-        color: white;
-        padding:  20px;
-        border-radius: 10px;
-        width:  100%;
-        display: block;
-        text-align: center;
-        font-size: x-large;
-        text-transform: uppercase;
-    }
-
-    ul#meta{
-        padding-bottom: 20px;
-    }
-
-    section h2{
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 antialiased">
-<div class="min-h-screen flex flex-col items-center justify-center p-4">
-<main class="w-full max-w-xl mx-auto">
-<header class="text-center mb-8">
-<h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-2">Fidget Feed</h1>
- <!-- <div class="logo-text tracking-tighter dark:text-primary"  style="line-height: 0;">
-    <img src="img/fidget_feed_logotype.svg"><br/>
-</div> -->
-<!-- <p class="text-lg text-white dark:text-primary font-semibold">Take Better Brain Breaks</p> -->
-</header>
-<div class="relative mb-12">
-<div class="absolute inset-0 bg-primary rounded-xl"></div>
-</div>
-<section class="space-y-8 mb-12 text-center">
-<div class="text-left">
-<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">Privacy Policy</h2>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-    <ul id="meta">
-        <li>Last updated: <b>Dec 7 2025</b></li>
-        <li>App Name: <b>Fidget Feed</b></li>
-        <li>Website: <b>https://fidgetfeed.com</b></li>
+<main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="font-display text-3xl sm:text-4xl text-white mb-2">Privacy Policy</h1>
+    <ul class="text-sm text-gray-500 mb-10 space-y-1">
+        <li>Last updated: <strong class="text-gray-300">Dec 7, 2025</strong></li>
+        <li>App Name: <strong class="text-gray-300">Fidget Feed</strong></li>
+        <li>Website: <strong class="text-gray-300">https://fidgetfeed.com</strong></li>
     </ul>
-    
-</p>
-<p>
-We value your privacy. This Privacy Policy explains how we collect, use, store, and delete information when you use our mobile application (“the App”). By using the App, you agree to the practices described here.
-</p>
+
+    <div class="prose prose-invert prose-gray max-w-none space-y-6 text-gray-400 leading-relaxed [&_h2]:font-display [&_h2]:text-xl [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-3">
+
+<p>We value your privacy. This Privacy Policy explains how we collect, use, store, and delete information when you use our mobile application ("the App"). By using the App, you agree to the practices described here.</p>
 
 <h2>1. Information We Collect</h2>
-
-We collect only the minimum personal data required for the App to function.
+<p>We collect only the minimum personal data required for the App to function.</p>
 
 <h2>1.1 Account Information</h2>
-
-If you create an account using email and password, we collect:
-
-Email address
-
-Password (stored securely as a hash; we never see the plain password)
-
-Firebase User ID (UID)
-
-This information is processed by Firebase Authentication, a service provided by Google.
+<p>If you create an account using email and password, we collect:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Email address</li>
+    <li>Password (stored securely as a hash; we never see the plain password)</li>
+    <li>Firebase User ID (UID)</li>
+</ul>
+<p>This information is processed by Firebase Authentication, a service provided by Google.</p>
 
 <h2>1.2 App Data Stored in Firebase</h2>
-
-Depending on your usage of the app, we may store limited user-generated or app-related data in Firebase (Firestore). Examples may include:
-
-User preferences or settings
-
-Session or usage metadata tied to your UID
-
-Other data necessary for core app functionality
-
-We do not collect or store financial information, contact lists, or device location.
+<p>Depending on your usage of the app, we may store limited user-generated or app-related data in Firebase (Firestore). Examples may include:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>User preferences or settings</li>
+    <li>Session or usage metadata tied to your UID</li>
+    <li>Other data necessary for core app functionality</li>
+</ul>
+<p>We do not collect or store financial information, contact lists, or device location.</p>
 
 <h2>1.3 Automatically Collected Technical Data</h2>
-
-Firebase may automatically collect:
-
-Device identifiers
-
-App version
-
-Crash logs (if Firebase Crashlytics is enabled)
-
-Basic diagnostic data
-
-This data helps us improve app performance and stability.
+<p>Firebase may automatically collect:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Device identifiers</li>
+    <li>App version</li>
+    <li>Crash logs (if Firebase Crashlytics is enabled)</li>
+    <li>Basic diagnostic data</li>
+</ul>
+<p>This data helps us improve app performance and stability.</p>
 
 <h2>2. How We Use Your Information</h2>
-
-We use the collected information solely to:
-
-Authenticate you and provide account access
-
-Store app-related data tied to your account
-
-Improve app performance, stability, and security
-
-Provide customer support when requested
-
-We do not sell your personal data.
-We do not use your data for advertising purposes.
+<p>We use the collected information solely to:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Authenticate you and provide account access</li>
+    <li>Store app-related data tied to your account</li>
+    <li>Improve app performance, stability, and security</li>
+    <li>Provide customer support when requested</li>
+</ul>
+<p>We do not sell your personal data. We do not use your data for advertising purposes.</p>
 
 <h2>3. How Your Information Is Stored and Protected</h2>
-
-Your data is stored securely using Firebase, which provides industry-standard security and encryption.
-
-All data is encrypted in transit (HTTPS/TLS).
-
-Passwords are hashed and never stored in plain text.
-
-Access to data is restricted by Firebase Security Rules.
+<p>Your data is stored securely using Firebase, which provides industry-standard security and encryption.</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>All data is encrypted in transit (HTTPS/TLS).</li>
+    <li>Passwords are hashed and never stored in plain text.</li>
+    <li>Access to data is restricted by Firebase Security Rules.</li>
+</ul>
 
 <h2>4. Data Sharing</h2>
-
-We do not share personal data with third parties except:
-
-Firebase / Google Cloud, which acts as our data processor and provides the backend infrastructure
-
-When required by law (e.g., legal request or court order)
-
-We do not share data for marketing or advertising.
+<p>We do not share personal data with third parties except:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Firebase / Google Cloud, which acts as our data processor and provides the backend infrastructure</li>
+    <li>When required by law (e.g., legal request or court order)</li>
+</ul>
+<p>We do not share data for marketing or advertising.</p>
 
 <h2>5. Data Retention</h2>
-
-We retain your data only as long as your account is active.
-When your account is deleted, all personal data associated with it is permanently removed from:
-
-Firebase Authentication
-
-Firestore or other Firebase storage locations
-
-See Section 6 for deletion instructions.
+<p>We retain your data only as long as your account is active. When your account is deleted, all personal data associated with it is permanently removed from:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Firebase Authentication</li>
+    <li>Firestore or other Firebase storage locations</li>
+</ul>
+<p>See Section 6 for deletion instructions.</p>
 
 <h2>6. Your Data Rights</h2>
-
-You have the right to:
-
-Access your data
-
-Correct your data
-
-Request deletion of your account and associated data
+<p>You have the right to:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Access your data</li>
+    <li>Correct your data</li>
+    <li>Request deletion of your account and associated data</li>
+</ul>
 
 <h2>6.1 Requesting Account Deletion</h2>
-
-To request deletion of your account and all associated data, click <a href="https://fidgetfeed.com/delete-account.html">here</a>
-
-Once we verify your identity, we will delete:
-
-Your Firebase Auth user record
-
-All Firestore documents associated with your UID
-
-Deletion requests are processed within 30 days.
+<p>To request deletion of your account and all associated data, visit our <a href="deletion-request.html">data deletion page</a>.</p>
+<p>Once we verify your identity, we will delete:</p>
+<ul class="list-disc pl-6 space-y-1">
+    <li>Your Firebase Auth user record</li>
+    <li>All Firestore documents associated with your UID</li>
+</ul>
+<p>Deletion requests are processed within 30 days.</p>
 
 <h2>6.2 Partial Data Deletion</h2>
+<p>We currently do not offer a method to delete individual pieces of data without deleting the entire account.</p>
 
-We currently do not offer a method to delete individual pieces of data without deleting the entire account.
-
-<h2>7. Children’s Privacy</h2>
-
-The App is not intended for children under 13.
-We do not knowingly collect information from children under 13.
+<h2>7. Children's Privacy</h2>
+<p>The App is not intended for children under 13. We do not knowingly collect information from children under 13.</p>
 
 <h2>8. Changes to This Policy</h2>
-
-We may update this Privacy Policy from time to time.
-The “Last updated” date at the top of this page will reflect any changes.
-
-You should review this page periodically for updates.
+<p>We may update this Privacy Policy from time to time. The "Last updated" date at the top of this page will reflect any changes. You should review this page periodically for updates.</p>
 
 <h2>9. Contact Us</h2>
+<p>If you have questions about this Privacy Policy or about how your data is handled, contact us at: <a href="mailto:support@fidgetfeed.com">support@fidgetfeed.com</a></p>
 
-If you have questions about this Privacy Policy or about how your data is handled, contact us at:
-
-<a href="mailto:support@fidgetfeed.com">support@fidgetfeed.com</a>
-
-</div>
-</section>
+    </div>
 </main>
-</div>
 
-</body></html>
+<!-- Footer -->
+<footer class="border-t border-white/5 py-8">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+        <span>&copy; 2025 Fidget Feed</span>
+        <div class="flex gap-6">
+            <a href="/" class="hover:text-gray-300 transition-colors">Home</a>
+            <a href="deletion-request.html" class="hover:text-gray-300 transition-colors">Data Deletion</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
