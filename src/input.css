@@ -116,7 +116,6 @@
         background: #1a1a28;
         border-radius: 1.5rem;
         overflow: hidden;
-        touch-action: none;
     }
 
     /* Android phone mockup */
